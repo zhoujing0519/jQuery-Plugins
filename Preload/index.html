@@ -3,6 +3,56 @@
     <head>
         <meta charset="utf-8">
         <title>图片预加载</title>
+        <style>
+            a{
+                text-decoration: none;
+            }
+
+            .box{
+                width: 1200px;
+                margin: 0 auto;
+            }
+
+            .box img{
+                width: 100%;
+            }
+
+            p{
+                text-align: center;
+            }
+
+            .btn{
+                display: inline-block;
+                color: #333;
+                line-height: 3em;
+                padding: 0 1em;
+                margin: 0 1em;
+                border: 1px solid currentColor;
+                border-radius: .3em;
+                text-align: center;
+                background: #fff;
+            }
+
+            .btn:hover{
+                background: #eee;
+            }
+
+            #loading{
+                position: fixed;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background: #eee;
+                z-index: 999;
+            }
+
+            #loading .progress{
+                text-align: center;
+                font-size: 20px;
+                margin-top: 300px;
+            }
+        </style>
     </head>
     <body>
         <div class="box">
@@ -36,8 +86,10 @@
                 $progress.html(Math.round((count + 1) / len * 100) + '%');
             },
             all: function(){
-                $('#loading').hide();
-                document.title = '1/' + len;
+                setTimeout(function(){
+                    $('#loading').hide();
+                    document.title = '1/' + len;
+                }, 1000);
             }
         });
 

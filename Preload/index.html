@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>图片预加载</title>
+    </head>
+    <body>
+        <div class="box">
+            <img id="img" src="images/1.jpg" alt="01">
+            <p>
+                <a class="btn" href="javascript:;" data-control="prev">上一页</a>
+                <a class="btn" href="javascript:;" data-control="next">下一页</a>
+            </p>
+        </div>
+        <div id="loading">
+            <p class="progress">0%</p>
+        </div>
+    </body>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+    <script type="text/javascript" src="preload.jquery.js"></script>
+    <script type="text/javascript">
+        var imgs = [
+                'images/1.jpg',
+                'images/2.jpg',
+                'images/3.jpg',
+                'images/4.jpg'
+            ],
+
+            index = 0,
+            len = imgs.length,
+            count = 0,
+            $progress = $('.progress');
+
+        $.preload(imgs, {
+            each: function(count){
+                $progress.html(Math.round((count + 1) / len * 100) + '%');
+            },
+            all: function(){
+                $('#loading').hide();
+                document.title = '1/' + len;
+            }
+        });
+
+        $('.btn').on('click', function(){
+            if('prev' === $(this).data('control')){
+                // 上一张
+                index = Math.max(0, --index);
+            }else{
+                // 下一张
+                console.log(index);
+                index = Math.min(len - 1, ++index);
+            }
+
+            document.title = (index + 1) + '/' + len;
+            $('#img').attr('src', imgs[index]);
+        });
+    </script>
+</html>

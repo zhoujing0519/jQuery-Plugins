@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Validate</title>
+    <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="wrap wrap-sm">
+        <div class="header">
+            <h1>Yo.</h1>
+        </div>
+        <div class="form">
+            <form id="signup">
+                <div class="input-wrap">
+                    <label>姓名</label>
+                    <input class="input-control" name="name" data-rule='maxlength:4|minlength:2' type="text">
+                    <div id="name-input-error" class="input-error">姓名格式有误</div>
+                </div>
+                <div class="input-wrap">
+                    <label>年龄</label>
+                    <input class="input-control" name="age" data-rule='min:18' type="text">
+                    <div id="age-input-error" class="input-error">年龄格式有误</div>
+                </div>
+                <div class="input-wrap">
+                    <label>用户名</label>
+                    <input class="input-control" name="username" data-rule='pattern:"^[a-z0-9]*$"|maxlength:8|minlength:4' type="text">
+                    <div id="username-input-error" class="input-error">用户名格式有误</div>
+                </div>
+                <div class="input-wrap">
+                    <label>密码</label>
+                    <input class="input-control" name="password" data-rule='maxlength:10|minlength:6' type="password">
+                    <div id="password-input-error" class="input-error">密码格式有误</div>
+                </div>
+                <div class="input-wrap">
+                    <label>自我介绍</label>
+                    <input class="input-control" name="intro" data-rule='required:false|maxlength:1024' type="text">
+                    <div id="intro-input-error" class="input-error">自我介绍格式有误</div>
+                </div>
+                <button class="button-control" type="submit">注册</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/validator.js"></script>
+<script src="js/input.js"></script>
+<script src="js/main.js"></script>
+</html>
